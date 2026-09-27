@@ -1,115 +1,122 @@
-import math
+# ==== Ex 1 ====
+a = 10
+area = 3.14 * (a**2)
+print('area of a cirle is', area)
 
-# ==========================================
-# Exercise 1: Calculate the area of a circle
-# ==========================================
-radius = float(input("Enter circle radius? "))
-# Using 3.14 to match the expected output (10 -> 314.0)
-area = 3.14 * (radius ** 2)
-print(f"Circle area = {area}")
+# ==== Ex 2 ====
+C = 10
+F = (C * 1.8) + 32
+print('the temperature in Fahrenheit is', F)
 
-# ==========================================
-# Exercise 2: Convert Celsius into Fahrenheit
-# ==========================================
-c = float(input("Enter the temperature in Celsius? "))
-f = c * 9/5 + 32
-print(f"{c} (C) = {f} (F)")
+# ==== Ex 3 ====
+n = int(input('Nhap n: '))
+is_prime = True
 
-# ==========================================
-# Exercise 3: Check whether a number is prime
-# ==========================================
-n_prime = int(input("Enter a number? "))
-if n_prime < 2:
-    print(f"{n_prime} is a NOT prime number")
+if n<= 1:
+    is_prime = False
 else:
-    is_prime = True
-    for i in range(2, int(math.sqrt(n_prime)) + 1):
-        if n_prime % i == 0:
+    for i in range(2,n):
+        if n % i == 0:
             is_prime = False
-            break
-            
-    if is_prime:
-        print(f"{n_prime} is a prime number")
-    else:
-        print(f"{n_prime} is a NOT prime number")
-
-# ==========================================
-# Exercise 4: Check whether a number is perfect
-# ==========================================
-n_perfect = int(input("Enter a number? "))
-if n_perfect <= 0:
-    print(f"{n_perfect} is a NOT perfect number")
+            break;
+if is_prime:
+    print(f"{n} is a prime number")
 else:
-    divisors_sum = sum(i for i in range(1, n_perfect) if n_perfect % i == 0)
-    if divisors_sum == n_perfect:
-        print(f"{n_perfect} is a perfect number")
-    else:
-        print(f"{n_perfect} is a NOT perfect number")
+    print(f"{n} is NOT prime number")
 
-# ==========================================
-# Exercise 5: Find favorite color in a list
-# ==========================================
-color_list = ["Black", "Yellow", "Blue", "Red", "White"]
-color = input("What is your favorite color? ")
-if color in color_list:
-    index = color_list.index(color)
-    print(f"Your color is at index {index} in my list")
+# ==== Ex 4 ====
+n = int(input('Nhap n: '))
+divisor_sum = 0
+for i in range(1,n):
+    if n % i == 0:
+        divisor_sum += i
+if divisor_sum == n:
+    print(f"{n} is a perfect number")
 else:
-    print("Sorry, I could not find your color")
+    print(f"{n} is NOT perfect number")
+    
+# ==== Ex 5 ====
+fav = ["orange", "blue", "green", "white"]
+color = input('What is your favorite color?')
 
-# ==========================================
-# Exercise 6: Create sequences using range()
-# ==========================================
-range1 = list(range(7))
-range2 = list(range(1, 11, 3))
-range3 = list(range(5, 0, -1))
-range4 = list(range(6, -3, -2))
+for i in range (len(fav)):
+    if color == fav[i]:
+        print(f"Your colod is at index {i} in my list")
+        break
+else:
+    print(f"Sorry, I could not find your color")
+    
+# ==== Ex 6 ====
+range1 = range(0,7)
+print([ i for i in range1])
+range2 = range(1, 13, 3)
+print([ i for i in range2])
+range3 = range(5, 0, -1)
+print([ i for i in range3])
+range4 = range(6, -4, -2)
+print([ i for i in range4])
 
-print("range1 |", ", ".join(map(str, range1)))
-print("range2 |", ", ".join(map(str, range2)))
-print("range3 |", ", ".join(map(str, range3)))
-print("range4 |", ", ".join(map(str, range4)))
-
-# ==========================================
-# Exercise 7: Function to remove dollar sign
-# ==========================================
+# ==== Ex 7 ====
 def remove_dollar_sign(s):
     return s.replace("$", "")
 
-# ==========================================
-# Exercise 8: Function to extract even items
-# ==========================================
+text_input = input("Enter a string with dollar signs: ")
+result = remove_dollar_sign(text_input)
+print(f"Result: {result}")
+# ==== Ex 8 ====
 def extract_even(l):
-    return [num for num in l if num % 2 == 0]
+    result = [] #list rỗng để chứa các số chắn tìm được
+    for x in l:
+        if x % 2 == 0:
+            result.append(x) #nếu chẵn thêm vào result
+    return result            #trả về list mới
+print(extract_even([1,2,5,-1,4,10]))
 
-# ==========================================
-# Exercise 9: Function to calculate factorial
-# ==========================================
-def calculate_factorial(n):
-    if n == 0 or n == 1:
-        return 1
-    fact = 1
-    for i in range(2, n + 1):
-        fact *= i
-    return fact
+# ==== Ex 9 ====
+def factorial(n):
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+print(factorial(5))
 
-# ==========================================
-# Exercise 10: Function to get all divisors
-# ==========================================
-def get_all_divisors(n):
-    if n <= 0:
-        return []
-    return [i for i in range(1, n + 1) if n % i == 0]
+# ==== Ex 10 ====
+def get_divisors(n):
+    out = []
+    for i in range(1, n+1):
+        if n % i == 0:
+            out += [i]
+    return out
+print(get_divisors(100))
 
-# ==========================================
-# Exercise 11: Function to compute distance
-# ==========================================
-def compute_distance(x1, y1, x2, y2):
-    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+# ==== Ex 11 ====
+import math
 
-# ==========================================
-# Exercise 12: Function to print m x n pattern
-# ==========================================
-def print_pattern(m, n):
-    for _ in range(m):
-        print("* " * n)
+x1 = float(input("Enter x1: "))
+y1 = float(input("Enter y1: "))
+x2 = float(input("Enter x2: "))
+y2 = float(input("Enter y2: "))
+
+distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+print("Distance between the points:", distance)
+
+# ==== Ex 12 ====
+m = int(input("Input m rows "))
+n = int(input("Input n columns "))
+for i in range(m):
+    s = "" # for one line
+    for j in range(n):
+        if i == 0 or i == m-1 or j == 0 or j == n-1:
+            s += "* "
+        else:
+            s += "  "
+    print(s)
+
+         
+        
+        
+
+
+
+
+    
